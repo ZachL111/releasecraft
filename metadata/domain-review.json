@@ -1,0 +1,73 @@
+{
+  "repo": "releasecraft",
+  "language": "Ruby",
+  "category": "Automation",
+  "goal": "Classify changelog fragments into deterministic release sections.",
+  "review_model": {
+    "terms": [
+      "dry-run spread",
+      "rename risk",
+      "operator cost",
+      "idempotence"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "dry-run spread",
+      "signal": 45,
+      "slack": 52,
+      "drag": 29,
+      "confidence": 70,
+      "score": 125,
+      "lane": "watch"
+    },
+    {
+      "name": "stress",
+      "focus": "rename risk",
+      "signal": 53,
+      "slack": 52,
+      "drag": 8,
+      "confidence": 88,
+      "score": 222,
+      "lane": "ship"
+    },
+    {
+      "name": "edge",
+      "focus": "operator cost",
+      "signal": 47,
+      "slack": 41,
+      "drag": 31,
+      "confidence": 68,
+      "score": 110,
+      "lane": "watch"
+    },
+    {
+      "name": "recovery",
+      "focus": "idempotence",
+      "signal": 69,
+      "slack": 27,
+      "drag": 25,
+      "confidence": 88,
+      "score": 178,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "dry-run spread",
+      "signal": 90,
+      "slack": 24,
+      "drag": 17,
+      "confidence": 80,
+      "score": 233,
+      "lane": "ship"
+    }
+  ]
+}

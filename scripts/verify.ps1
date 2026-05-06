@@ -59,3 +59,7 @@ foreach ($pathPattern in $knownPaths) {
 }
 
 ruby -Ilib tests/test_policy.rb
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-releasecraft-detail.ps1
+
+ruby -Ilib tests/test_domain_review.rb
