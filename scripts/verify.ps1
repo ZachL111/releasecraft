@@ -63,3 +63,9 @@ ruby -Ilib tests/test_policy.rb
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-releasecraft-detail.ps1
 
 ruby -Ilib tests/test_domain_review.rb
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-releasecraft-properties.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-releasecraft-golden.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
